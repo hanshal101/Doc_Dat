@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('./partials/header') %>
+    <title>Doctor Dashboard</title>
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+    <%- include('./partials/nav') %>
+    <form action="/doctor/addPatient" method="post">
+        <div>
+          <div class="container" style="padding-top: 20px">
+              <div class="mb-3">
+                  <label for="name" class="form-label">Full Name</label>
+                  <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email">
+                </div>
+                <div class="mb-3">
+                  <label for="phno" class="form-label">Phone Number</label>
+                  <input type="number" class="form-control" id="phno" placeholder="9753124680" name="phno">
+                </div>
+                <div class="mb-3">
+                    <label for="phno" class="form-label">Address</label>
+                    <input type="number" class="form-control" id="phno" placeholder="9753124680" name="phno">
+                  </div>
+              <div>
+          <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+          </div>
+      
+    <%- include('./partials/script') %>
+</body>
+</html>

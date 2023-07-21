@@ -5,8 +5,8 @@
     <title>Doctor Dashboard</title>
 </head>
 <body>
-    <%- include('./partials/nav') %>
-    <form action="/doctor/signup" method="post">
+    <%- include('./partials/pat_nav') %>
+    <form action="/patients/signup" method="post">
   <div>
     <div class="container" style="padding-top: 20px">
         <div class="mb-3">
@@ -26,17 +26,10 @@
             <input type="number" class="form-control" id="phno" placeholder="9753124680" name="phno">
           </div>
           <div class="mb-3">
-            <label for="degree" class="form-label">Degree</label>
-            <input type="text" class="form-control" id="degree" placeholder="MBBS , MS in Surgeon" name="degree">
+            <label for="address" class="form-label">Address</label>
+            <input type="text" class="form-control" id="address" name="address">
           </div>
-          <div class="mb-3">
-            <label for="specialization" class="form-label">Specialization</label>
-            <input type="text" class="form-control" id="specialization" placeholder="Surgeon" name="specialization">
-          </div>
-          <div class="mb-3">
-            <label for="university" class="form-label">university</label>
-            <input type="text" class="form-control" id="university" placeholder="Surgeon" name="university">
-          </div>
+          
         <div>
     <button class="btn btn-primary" type="submit">Submit form</button>
   </div>
