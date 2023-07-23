@@ -30,16 +30,26 @@ const docSchema = new Schema(
     patients: {
       type: [{
         name: {
-          stype: String,
+          type: String,
         },
         email: {
-          stype: String,
+          type: String,
         },
         phno: {
-          stype: String,
+          type: String,
         },
         address: {
-          stype: String,
+          type: String,
+        },
+        reports:{
+          type:[{
+            reportPDF:{
+              type:String,
+            },
+            date_time:{
+              type: String,
+            },
+          }]
         },
       }],
     },
@@ -56,6 +66,9 @@ const docSchema = new Schema(
       required: true,
       unique: true,
     },
+    authKEY:{
+      type:String,
+    }
   },
   { timestamps: true }
 );

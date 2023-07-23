@@ -35,6 +35,10 @@ server.get('/signin', (req, res) => {
   res.render('signin');
 });
 
+server.get('/addPatient', (req, res) => {
+  res.render('addPatient');
+});
+
 server.use("/patients", patRoutes);
 server.get('/patients', (req, res) => {
     res.render('pat_home');

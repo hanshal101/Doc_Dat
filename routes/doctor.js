@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const Doctor = require('../models/doctors')
-
+const {randomBytes} = require('crypto');
 const router = Router()
 
 router.get('/signup', (req,res)=>{
@@ -9,6 +9,10 @@ router.get('/signup', (req,res)=>{
 
 router.get('/signin', (req,res)=>{
     res.render('signin');
+});
+
+router.get('/addPatient', (req,res)=>{
+    res.render('addPatient');
 });
 
 router.post('/signin', async (req,res)=>{
@@ -30,6 +34,7 @@ router.post('/signup', async (req,res)=>{
         degree,
         specialization,
     } = req.body;
+    const authKEY = randomBytes(16).toString('hex');
     await Doctor.create({
         fullName,
         email,
@@ -38,9 +43,30 @@ router.post('/signup', async (req,res)=>{
         university,
         degree,
         specialization,
+        authKEY
     });
     return res.redirect('/doctor');
 });
+
+
+router.post('/addPatient', async (req, res) => {
+    const { name, email, phno, address } = req.body;
+    const { authKEY } = req.body;
+  
+    try {
+        const doctor = await Doctor.findOne({authKEY})
+        if (!doctor) {
+          return res.status(404).json({ error: 'Doctor not found' });
+        }
+      doctor.patients.push({name, email, phno, address});
+      await doctor.save();
+
+      return res.status(201).send("Patient added successfully");
+    } catch (error) {
+      console.error('Error adding patient:', error);
+      return res.status(500).json({ error: 'Server error' });
+    }
+  });
 
 module.exports = router;
 
