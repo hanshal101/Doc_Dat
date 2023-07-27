@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('./partials/header') %>
+    <title>Doctor Dashboard</title>
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+    <%- include('./partials/nav') %>
+    <form action="/doctor/addReport" method="post">
+        <div class="container" style="padding-top: 20px">
+            <div class="mb-3">
+                <label for="authKEY" class="form-label">Doctor ID</label>
+                <input type="text" class="form-control" id="authKEY" name="authKEY">
+            </div>
+            <div class="mb-3">
+                <label for="phno" class="form-label">Phone Number</label>
+                <input type="number" class="form-control" id="phno" placeholder="9753124680" name="phno">
+            </div>
+            <div class="mb-3">
+                <label for="reportPDF" class="form-label">PDF Report</label>
+                <input type="text" class="form-control" id="reportPDF" name="reportPDF">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" class="form-control" id="description" placeholder="AIDS, Cancer" name="description">
+            </div>
+            <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+    </form>
+    <%- include('./partials/script') %>
+</body>
+</html>

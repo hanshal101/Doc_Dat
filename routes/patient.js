@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const Patients = require('../models/patients');
-
+const Doctor = require('../models/doctors');
 const router = Router();
 
 router.get('/', (req, res) => {
@@ -15,6 +15,10 @@ router.get('/signin', (req, res) => {
   res.render('pat_signin');
 });
 
+router.get('/allDoctors',async (req,res)=>{
+  const doctors = await Doctor.find();
+  res.render('allDoctors',{doctors });
+});
 router.post('/signin', async (req, res) => {
   const { email, password } = req.body;
 

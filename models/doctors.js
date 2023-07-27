@@ -27,8 +27,7 @@ const docSchema = new Schema(
       type: String,
       required: true,
     },
-    patients: {
-      type: [{
+    patients:  [{
         name: {
           type: String,
         },
@@ -46,13 +45,21 @@ const docSchema = new Schema(
             reportPDF:{
               type:String,
             },
-            date_time:{
-              type: String,
+            description:{
+              type:String,
             },
-          }]
+            report_created:{
+              type:String,
+            },
+          },
+        ]
         },
-      }],
-    },
+        patient_created:{
+        type:String,
+      },
+      },
+      
+    ],
     university: {
       type: String,
       required: true,

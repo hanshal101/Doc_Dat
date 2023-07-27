@@ -1,0 +1,55 @@
+<!-- views/allDoctors.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('./partials/header') %>
+    <title>All Doctors</title>
+    <link rel="stylesheet" href="css/home.css">
+    <style>
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: 50% 50%;
+            gap: 20px;
+        }
+
+        .card {
+            max-width: 540px;
+            margin: 20px;
+            display: grid;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <%- include('./partials/pat_nav') %>
+
+    <div class="doctors-grid" style="padding-left: 7%; padding-top: 3%;">
+        <% doctors.forEach((doctor) => { %>
+            <div class="card">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="https://media.istockphoto.com/id/138205019/photo/happy-healthcare-practitioner.jpg?s=612x612&w=0&k=20&c=b8kUyVtmZeW8MeLHcDsJfqqF0XiFBjq6tgBQZC7G0f0=" class="img-fluid rounded-start" alt="profileIMG" style="height: 200px; width: 300px;">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= doctor.fullName %></h5>
+                            <div class="card-text">
+                                <p><%= doctor.degree %> , Specialization in <%= doctor.specialization %></p>
+                                <p>Contact : <%= doctor.email %>, <%= doctor.phno %></p>
+                                <p>Location : Sadmini Building ,Near GuruKripa Hotel, Sion(W), Mumbai-22</p>
+                                <p>Total Patients : <%= doctor.patients.length %></p>
+                                <p><small class="text-body-secondary">Last updated : <%= doctor.updatedAt %></small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+
+    <%- include('./partials/script') %>
+</body>
+</html>
